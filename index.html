@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio - Terence T.</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-navbar">
+        <div class="navbar-container">
+            <div class="navbar-left">
+                <div class="logo">
+                    <div class="loader">
+                        <div class="cell d-0"></div>
+                        <div class="cell d-1"></div>
+                        <div class="cell d-2"></div>
+                        <div class="cell d-1"></div>
+                        <div class="cell d-2"></div>
+                        <div class="cell d-2"></div>
+                        <div class="cell d-3"></div>
+                        <div class="cell d-3"></div>
+                        <div class="cell d-4"></div>
+                    </div>
+                    <span class="logo-text">Portfolio</span>
+                </div>
+            </div>
+
+            <div class="navbar-center">
+                <ul class="nav-menu">
+                    <li><a href="#accueil" class="nav-link" data-section="accueil">Accueil</a></li>
+                    <li><a href="#profil" class="nav-link" data-section="profil">Profil</a></li>
+                    <li><a href="#bts-sio" class="nav-link" data-section="bts-sio">BTS SIO</a></li>
+                    <li><a href="#projets" class="nav-link" data-section="projets">Projets</a></li>
+                    <li><a href="#stages" class="nav-link" data-section="stages">Stages</a></li>
+                    <li><a href="#certification" class="nav-link" data-section="certification">Certification</a></li>
+                    <li><a href="#competence" class="nav-link" data-section="competence">Compétence</a></li>
+                    <li><a href="#veille" class="nav-link" data-section="veille">Veille</a></li>
+                    <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="navbar-right">
+                <div class="user-profile">
+                    <video class="user-img" autoplay loop muted>
+                        <source src="profil.mp4" type="video/mp4">
+                    </video>
+                    <span class="user-name">Terence</span>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="bx bx-moon"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" id="mobile-toggle">
+                <i class="bx bx-menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main content with structured sections -->
+    <div class="main-content">
+        <!-- Section Accueil -->
+        <section id="accueil" class="section-container">
+            <div class="section-content">
+                <h1 class="section-title">Bienvenue sur mon Portfolio</h1>
+                <h2 class="section-subtitle">Développeur Web & Applications</h2>
+                <div class="section-text">
+                    <p>Je suis Terence, étudiant en BTS SIO option SLAM, passionné par le développement web et la programmation.</p>
+                    <p>Découvrez mon parcours, mes compétences et mes réalisations à travers ce portfolio.</p>
+                </div>
+                <div class="section-cta">
+                    <a href="#profil" class="btn-primary">En savoir plus</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Profil -->
+        <section id="profil" class="section-container">
+            <div class="section-content">
+                <h1 class="section-title">Mon Profil</h1>
+                <h2 class="section-subtitle">Qui suis-je ?</h2>
+                <div class="section-text">
+                    <p>Étudiant en BTS SIO, je me spécialise dans le développement et Cybersécurité</p>
+                    <p>Ma passion pour l'informatique m'a conduit à développer diverses compétences techniques et à participer à plusieurs projets enrichissants.</p>
+                </div>
+                <div class="profile-details">
+                    <div class="profile-info">
+                        <h3>Informations personnelles</h3>
+                        <ul>
+                            <li><strong>Nom :</strong> Terence T.</li>
+                            <li><strong>Formation :</strong> BTS SIO option SLAM</li>
+                            <li><strong>Localisation :</strong> Paris, France</li>
+                        </ul>
+                    </div>
+                    <div class="profile-skills">
+                        <h3>Compétences clés</h3>
+                        <ul>
+                            <li>Développement Web</li>
+                            <li>Programmation Orientée Objet</li>
+                            <li>Gestion de Bases de Données</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section BTS SIO -->
+        <section id="bts-sio" class="section-container">
+            <div class="section-content">
+                <h1 class="section-title">BTS SIO</h1>
+                <h2 class="section-subtitle">Services Informatiques aux Organisations</h2>
+                <div class="section-text">
+                    <p>Le BTS SIO est une formation de niveau Bac+2 qui prépare aux métiers de l'informatique.</p>
+                </div>
+                <div class="bts-options">
+                    <div class="option-card">
+                        <h3>Option SLAM</h3>
+                        <p>Solutions Logicielles et Applications Métiers</p>
+                        <ul>
+                            <li>Développement d'applications</li>
+                            <li>Programmation web</li>
+                            <li>Gestion de bases de données</li>
+                        </ul>
+                    </div>
+                    <div class="option-card">
+                        <h3>Option SISR</h3>
+                        <p>Solutions d'Infrastructure, Systèmes et Réseaux</p>
+                        <ul>
+                            <li>Administration système</li>
+                            <li>Configuration réseaux</li>
+                            <li>Sécurité informatique</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Projets -->
+<section id="projets" class="section-container">
+    <div class="section-content">
+        <h1 class="section-title">Projets</h1>
+        <h2 class="section-subtitle">Mes réalisations</h2>
+        <div class="section-text">
+            <p>
+                Voici une sélection de projets réalisés dans le cadre de ma formation, de mes stages 
+                et de mon apprentissage personnel. Chaque projet illustre mes compétences en développement,
+                en conception d’interface et en bonnes pratiques.
+            </p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Portfolio Personnel</h3>
+                <p>
+                    Site web moderne en one-page présentant mon profil, mes compétences et mes projets,
+                    développé en HTML, CSS et JavaScript avec animations et mode sombre/clair.
+                </p>
+                <div class="project-tags">
+                    <span>HTML/CSS</span><span>JavaScript</span><span>UI/UX</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="btn-primary">Voir le projet</a>
+                    <a href="https://github.com/Slyingball" class="code-link" target="_blank">Code source</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Application de Gestion RH</h3>
+                <p>
+                    Application web interne permettant de gérer les employés, congés et contrats,
+                    avec interface d’administration sécurisée.
+                </p>
+                <div class="project-tags">
+                    <span>PHP</span><span>MySQL</span><span>CRUD</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="btn-primary">Documentation</a>
+                    <a href="#" class="code-link">Bientôt disponible</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Outil de Veille Cybersécurité</h3>
+                <p>
+                    Dashboard de veille automatisée récupérant des articles et ressources sur l’IA, 
+                    la cybersécurité et le quantique.
+                </p>
+                <div class="project-tags">
+                    <span>Python</span><span>API</span><span>Automatisation</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="btn-primary">Présentation</a>
+                    <a href="#" class="code-link">Bientôt disponible</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        <!-- Section Stages -->
+        <section id="stages" class="section-container">
+            <div class="section-content">
+                <h1 class="section-title">Mes Stages</h1>
+                <h2 class="section-subtitle">Expériences professionnelles</h2>
+                <div class="stages-timeline">
+                    <div class="stage-card">
+                        <h3>Stage de première année</h3>
+                        <h4>Entreprise XYZ - 2025</h4>
+                        <p>Développement d'une application web interne pour la gestion des ressources humaines.</p>
+                        <ul>
+                            <li>Conception de base de données</li>
+                            <li>Création d'interfaces utilisateur</li>
+                            <li>Développement backend en PHP</li>
+                        </ul>
+                    </div>
+                    <div class="stage-card">
+                        <h3>Stage de deuxième année</h3>
+                        <h4>Entreprise ABC - 2026</h4>
+                        <p>blalbalablabalablabalablablalabalbal</p>
+                        <ul>
+                            <li>Intégration de designs responsive</li>
+                            <li>Configuration de la plateforme e-commerce</li>
+                            <li>Optimisation des performances</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Certification -->
+        <section id="certification" class="section-container">
+            <div class="section-content">
+                <h1 class="section-title">Certifications</h1>
+                <h2 class="section-subtitle">Mes qualifications professionnelles</h2>
+                <div class="certifications-grid">
+                    <div class="certification-card">
+                        <h3>MOOC de l'ANSSI</h3>
+                        <p>Secnumacademie - 2024</p>
+                    </div>
+                    <div class="certification-card">
+                        <h3>Introduction to Modern AI</h3>
+                        <p>Netacad - 2025</p>
+                    </div>
+                    <div class="certification-card">
+                        <h3>Introduction à la Cybersécurité</h3>
+                        <p>Netacad - 2025</p>
+                    </div>
+                    <div class="certification-card">
+                        <h3>Python</h3>
+                        <p>Udemy - 2025</p>
+                    </div>
+                    <div class="certification-card">
+                        <h3>AWS</h3>
+                        <p>AWS - 2025</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Compétence -->
+        <section id="competence" class="section-container">
+            <div class="section-content">
+                <h1 class="section-title">Compétences</h1>
+                <h2 class="section-subtitle">Technologies maîtrisées</h2>
+                <div class="competences-container">
+                    <div class="competence-category">
+                        <h3>Langages de programmation</h3>
+                        <div class="competence-items">
+                            <div class="competence-item">
+                                <span>HTML/CSS</span>
+                                <div class="progress-bar" data-value="95"></div>
+                            </div>
+                            <div class="competence-item">
+                                <span>JavaScript</span>
+                                <div class="progress-bar" data-value="60"></div>
+                            </div>
+                            <div class="competence-item">
+                                <span>PHP</span>
+                                <div class="progress-bar" data-value="40"></div>
+                            </div>
+                            <div class="competence-item">
+                                <span>Python</span>
+                                <div class="progress-bar" data-value="50"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="competence-category">
+                        <h3>Frameworks & Outils</h3>
+                        <div class="competence-items">
+                            <div class="competence-item">
+                                <span>React.js</span>
+                                <div class="progress-bar" data-value="10"></div>
+                            </div>
+                            <div class="competence-item">
+                                <span>Laravel</span>
+                                <div class="progress-bar" data-value="5"></div>
+                            </div>
+                            <div class="competence-item">
+                                <span>Git</span>
+                                <div class="progress-bar" data-value="20"></div>
+                            </div>
+                            <div class="competence-item">
+                                <span>MySQL</span>
+                                <div class="progress-bar" data-value="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Veille Informatique -->
+        <section id="veille" class="section-container">
+            <div class="section-content">
+                <h1 class="section-title">Veille Informatique</h1>
+                <h2 class="section-subtitle">Physique Quantique & Intelligence Artificielle</h2>
+                
+                <div class="veille-content">
+                    <p>
+                        Cette veille technologique explore les synergies entre la physique quantique et l'intelligence artificielle, 
+                        en mettant en lumière les avancées récentes et les perspectives futures.
+                    </p>
+            
+                    <div class="veille-topics">
+                        <div class="veille-topic">
+                            <h3>Événements et Conférences</h3>
+                            <p>
+                                Le 11 mars 2025, l'Institut Courtois et Mila ont organisé la quatrième édition de leur événement annuel 
+                                « À l'intersection de l'IA et de la Quantique », explorant les opportunités et les défis de ces domaines en pleine croissance.
+                            </p>
+                            <div class="veille-sources">
+                                <span>
+                                    Source : 
+                                    <a href="https://institut-courtois.umontreal.ca/a-lintersection-de-lia-et-de-la-quantique/">
+                                        Institut Courtois
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+            
+                        <div class="veille-topic">
+                            <h3>Avancées Technologiques</h3>
+                            <p>
+                                Microsoft a annoncé une avancée majeure avec la puce quantique « Majorana 1 », basée sur un nouvel état de la matière, 
+                                visant à accélérer le développement d'ordinateurs quantiques fonctionnels.
+                            </p>
+                            <div class="veille-sources">
+                                <span>
+                                    Source : 
+                                    <a href="https://www.businessinsider.com/satya-nadella-microsoft-new-majorana-chip-quantum-breakthrough-state-matter-2025-2">
+                                        Business Insider
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+            
+                        <div class="veille-topic">
+                            <h3>Applications Pratiques</h3>
+                            <p>
+                                Des chercheurs ont développé un outil de prévision des turbulences basé sur l'IA, appelé TAROQQO, 
+                                et un système d'optique adaptative pour améliorer les communications quantiques en espace libre.
+                            </p>
+                            <div class="veille-sources">
+                                <span>
+                                    Source : 
+                                    <a href="https://phys.org/news/2025-03-ai-optics-propel-free-space.html">
+                                        Phys.org
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+            
+                        <div class="veille-topic">
+                            <h3>Perspectives et Défis</h3>
+                            <p>
+                                Les entreprises du secteur quantique, telles que Classiq Technologies, IBM, Google et Microsoft, 
+                                investissent dans des programmes de formation pour anticiper une pénurie de talents, 
+                                avec une demande de spécialistes en informatique quantique projetée à 250 000 emplois d'ici 2030.
+                            </p>
+                            <div class="veille-sources">
+                                <span>
+                                    Source : 
+                                    <a href="https://www.businessinsider.com/quantum-startups-learning-from-ai-company-mistakes-finding-recruiting-talent-2025-4">
+                                        Business Insider
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact -->
+        <section id="contact" class="section-container">
+            <div class="section-content">
+                <h1 class="section-title">Contact</h1>
+                <h2 class="section-subtitle">Prenons contact</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="bx bx-envelope"></i>
+                            <span><a href="mailto:mardon.terence@gmail.com">mardon.terence@gmail.com</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="bx bx-phone"></i>
+                            <span><a href="tel:+33769688292">+33 7 69 68 82 92</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="bx bxl-linkedin-square"></i>
+                            <span><a href="https://www.linkedin.com/in/terencemardon" target="_blank">www.linkedin.com/in/terencemardon</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="bx bxl-github"></i>
+                            <span><a href="https://github.com/Slyingball" target="_blank">https://github.com/Slyingball</a></span>
+                        </div>
+                            <!-- Bouton de téléchargement du CV -->
+                        <div class="cv-download">
+                            <a href="cv_terence.pdf" class="btn-primary" download>
+                                <i class="bx bx-download"></i> Télécharger mon CV
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Nom</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">Envoyer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
