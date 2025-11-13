@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T&#233;l&#233;charger mon CV</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cv-body {
+            min-height: 100vh;
+            width: 100%;
+            padding: clamp(32px, 6vw, 96px) clamp(18px, 5vw, 72px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #f5f4fb;
+        }
+
+        .cv-wrapper {
+            width: min(1100px, 100%);
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .cv-intro {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: clamp(24px, 4vw, 48px);
+            border-radius: 28px;
+            box-shadow: 0 30px 80px rgba(15, 12, 41, 0.4);
+            backdrop-filter: blur(16px);
+        }
+
+        .cv-intro .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 18px;
+            border-radius: 999px;
+            background: rgba(155, 93, 229, 0.18);
+            color: #e1c9ff;
+            font-size: 0.82rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .cv-intro h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .cv-intro p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .cv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .cv-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 26px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            box-shadow: 0 25px 50px rgba(7, 5, 24, 0.6);
+            backdrop-filter: blur(18px);
+        }
+
+        .card-badge {
+            align-self: flex-start;
+            padding: 6px 16px;
+            border-radius: 999px;
+            letter-spacing: 0.16em;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            background: rgba(135, 111, 255, 0.15);
+            color: #d6c3ff;
+        }
+
+        .cv-card h2 {
+            font-size: 1.6rem;
+            color: #ffffff;
+        }
+
+        .cv-card p {
+            color: rgba(255, 255, 255, 0.82);
+            line-height: 1.5;
+        }
+
+        .cv-preview {
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.15), rgba(21, 18, 63, 0.8));
+            box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .preview-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .preview-line {
+            height: 8px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .preview-line.wide {
+            width: 90%;
+        }
+
+        .preview-line.mid {
+            width: 65%;
+        }
+
+        .preview-line.short {
+            width: 45%;
+        }
+
+        .cv-meta {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.76);
+        }
+
+        .cv-meta strong {
+            color: #ffffff;
+        }
+
+        .card-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(120deg, #8f6fff, #d56eff);
+            color: #0b0b12;
+            box-shadow: 0 15px 30px rgba(155, 93, 229, 0.35);
+        }
+
+        .btn-ghost {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            background: transparent;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45);
+        }
+
+        .back-arrow {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(15, 12, 41, 0.65);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            z-index: 2;
+        }
+
+        .back-arrow span {
+            font-size: 0.85rem;
+            margin-left: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .cv-intro {
+                text-align: left;
+            }
+
+            .card-actions {
+                flex-direction: column;
+            }
+
+            .back-arrow {
+                top: 18px;
+                left: 18px;
+                width: 42px;
+                height: 42px;
+            }
+
+            .back-arrow span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="cv-body">
+    <a href="index.html" class="back-arrow" aria-label="Retour &#224; l'accueil">
+        &#8592; <span>Retour</span>
+    </a>
+
+    <main class="cv-wrapper">
+        <section class="cv-intro">
+            <div class="eyebrow">cv en un clic</div>
+            <h1>CV Télécharger ci-dessous</h1>
+        </section>
+
+        <section class="cv-grid" aria-label="Formats de CV disponibles">
+            <article class="cv-card">
+                <div class="card-badge">ATS ready</div>
+                <h2>CV optimis&#233; ATS</h2>
+
+                <div class="cv-preview" aria-hidden="true">
+                    <div class="preview-header">Prenom Nom</div>
+                    <div class="preview-line wide"></div>
+                    <div class="preview-line mid"></div>
+                    <div class="preview-line short"></div>
+                    <div class="preview-line wide"></div>
+                    <div class="preview-line mid"></div>
+                </div>
+                <ul class="cv-meta">
+                    <li><strong>Mise &#224; jour:</strong> Novembre 2025</li>
+                </ul>
+                <div class="card-actions">
+                    <a class="btn btn-primary" href="assets/cv-ats.pdf" download>T&#233;l&#233;charger</a>
+                    <a class="btn btn-ghost" href="assets/cv-ats.pdf" target="_blank" rel="noopener">Voir l'aper&#231;u</a>
+                </div>
+            </article>
+
+            <article class="cv-card">
+                <div class="card-badge">Canva</div>
+                <h2>CV signature Canva</h2>
+
+                <div class="cv-preview" aria-hidden="true">
+                    <div class="preview-header">Prenom Nom</div>
+                    <div class="preview-line wide"></div>
+                    <div class="preview-line short"></div>
+                    <div class="preview-line wide"></div>
+                    <div class="preview-line mid"></div>
+                    <div class="preview-line short"></div>
+                </div>
+                <ul class="cv-meta">
+                    <li><strong>Mise &#224; jour:</strong> Novembre 2025</li>
+                </ul>
+                <div class="card-actions">
+                    <a class="btn btn-primary" href="assets/cv-canva.pdf" download>T&#233;l&#233;charger</a>
+                    <a class="btn btn-ghost" href="https://www.canva.com/" target="_blank" rel="noopener">Ouvrir dans Canva</a>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
