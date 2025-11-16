@@ -49,16 +49,25 @@ html {
 }
 
 .logo {
-    display: flex;
+    --logo-size: 56px;
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
     color: #fff;
     cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    height: var(--logo-size);
+    line-height: 1;
+    position: relative;
 }
 
 .logo-text {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 600;
+    letter-spacing: 0.08em;
+    display: inline-flex;
+    gap: 1px;
 }
 
 .navbar-center {
@@ -227,6 +236,39 @@ html {
     margin-bottom: 15px;
 }
 
+.projects-toggle {
+    display: inline-flex;
+    gap: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.toggle-btn {
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: 1px solid rgba(155, 93, 229, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.toggle-btn:hover {
+    background: rgba(155, 93, 229, 0.15);
+    border-color: rgba(155, 93, 229, 0.8);
+}
+
+.toggle-btn.active {
+    background: linear-gradient(135deg, #9b5de5, #6c63ff);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(155, 93, 229, 0.4);
+}
+
 /* ==================== BUTTONS ==================== */
 .btn-primary {
     display: inline-block;
@@ -367,6 +409,10 @@ html {
     transform: translateY(-6px);
     background-color: rgba(255, 255, 255, 0.12);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.project-card.is-hidden {
+    display: none;
 }
 
 .project-card h3 {
@@ -872,44 +918,143 @@ body.light-mode .project-links .code-link {
     background-color: rgba(255, 255, 255, 0.15);
 }
 
-/* ==================== LOADER ANIMATION ==================== */
-.loader {
-    display: inline-flex;
-    gap: 2px;
+/* ==================== LOGO EMBLEM ==================== */
+
+.logo-emblem {
+    position: relative;
+    width: var(--logo-size);
+    height: var(--logo-size);
+    border-radius: 22px;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.45), rgba(48, 43, 99, 0.85) 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    perspective: 700px;
+    box-shadow: inset 0 3px 12px rgba(255, 255, 255, 0.25), 0 18px 40px rgba(0, 0, 0, 0.55);
+    animation: emblemHover 5.5s ease-in-out infinite;
+    overflow: visible;
 }
 
-.loader .cell {
-    height: 8px;
-    width: 8px;
-    background-color: #9b5de5;
-    animation: loader-animation 1s infinite;
-    border-radius: 2px;
+.logo-emblem::after {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 30%;
+    bottom: -30px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.45), transparent 70%);
+    filter: blur(10px);
+    opacity: 0.8;
 }
 
-@keyframes loader-animation {
-    0%, 100% {
-        opacity: 1;
+.logo-core {
+    position: relative;
+    width: calc(var(--logo-size) * 0.45);
+    height: calc(var(--logo-size) * 0.45);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff, #b892ff 45%, #5a189a 75%);
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.6), 0 8px 16px rgba(0, 0, 0, 0.4);
+    animation: corePulse 3s ease-in-out infinite;
+}
+
+.logo-core::after {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent 70%);
+    filter: blur(2px);
+}
+
+.logo-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(155, 93, 229, 0.45);
+    border-top-color: rgba(255, 255, 255, 0.9);
+    border-bottom-color: rgba(48, 43, 99, 0.85);
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.45));
+    mix-blend-mode: screen;
+}
+
+.ring-one {
+    width: 90%;
+    height: 90%;
+    transform: rotateX(65deg);
+    animation: ringOrbit 7s linear infinite;
+}
+
+.ring-two {
+    width: 120%;
+    height: 120%;
+    transform: rotateY(65deg);
+    border-color: rgba(108, 99, 255, 0.45);
+    border-top-color: rgba(255, 255, 255, 0.6);
+    animation: ringOrbitReverse 8.5s linear infinite;
+}
+
+.ring-three {
+    width: 140%;
+    height: 140%;
+    transform: rotateX(20deg) rotateY(25deg);
+    border-color: rgba(151, 71, 255, 0.35);
+    border-top-color: rgba(255, 255, 255, 0.5);
+    animation: ringDrift 10s ease-in-out infinite;
+}
+
+.logo-labels {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+}
+
+.logo-subtitle {
+    margin-top: 3px;
+    font-size: 0.62rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes emblemHover {
+    0% {
+        transform: rotateX(8deg) rotateY(-16deg) translateY(0);
     }
     50% {
-        opacity: 0.3;
+        transform: rotateX(4deg) rotateY(-22deg) translateY(-3px);
+    }
+    100% {
+        transform: rotateX(8deg) rotateY(-16deg) translateY(0);
     }
 }
 
-.loader .cell.d-1 {
-    animation-delay: 0.1s;
+@keyframes corePulse {
+    0%, 100% {
+        transform: scale(0.98);
+        box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.55), 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: inset 0 0 28px rgba(255, 255, 255, 0.9), 0 12px 24px rgba(155, 93, 229, 0.35);
+    }
 }
 
-.loader .cell.d-2 {
-    animation-delay: 0.2s;
+@keyframes ringOrbit {
+    0% { transform: rotateX(65deg) rotateZ(0deg); }
+    100% { transform: rotateX(65deg) rotateZ(360deg); }
 }
 
-.loader .cell.d-3 {
-    animation-delay: 0.3s;
+@keyframes ringOrbitReverse {
+    0% { transform: rotateY(65deg) rotateZ(0deg); }
+    100% { transform: rotateY(65deg) rotateZ(-360deg); }
 }
 
-.loader .cell.d-4 {
-    animation-delay: 0.4s;
+@keyframes ringDrift {
+    0% { transform: rotateX(20deg) rotateY(25deg) scale(0.98); opacity: 0.75; }
+    50% { transform: rotateX(26deg) rotateY(35deg) scale(1.02); opacity: 1; }
+    100% { transform: rotateX(20deg) rotateY(25deg) scale(0.98); opacity: 0.75; }
 }
+
 
 /* ==================== THEME TOGGLE BUTTON ==================== */
 .theme-toggle {
@@ -969,6 +1114,36 @@ body.light-mode .user-name,
 body.light-mode .nav-link,
 body.light-mode .mobile-menu-toggle {
     color: #333;
+}
+
+body.light-mode .logo-emblem {
+    background: linear-gradient(135deg, #b892ff 0%, #9b5de5 45%, #5a189a 100%);
+    box-shadow: inset 0 2px 8px rgba(255, 255, 255, 0.4), 0 14px 22px rgba(90, 24, 154, 0.35);
+}
+
+body.light-mode .logo-core {
+    background: radial-gradient(circle at 25% 25%, #ffffff, #ffd6ff 50%, #b892ff 85%);
+}
+
+body.light-mode .logo-ring {
+    border-color: rgba(90, 24, 154, 0.35);
+    border-top-color: rgba(255, 255, 255, 0.65);
+}
+
+body.light-mode .logo-subtitle {
+    color: rgba(51, 51, 51, 0.65);
+}
+
+body.light-mode .toggle-btn {
+    background: rgba(90, 24, 154, 0.08);
+    color: #3a0ca3;
+    border-color: rgba(90, 24, 154, 0.3);
+}
+
+body.light-mode .toggle-btn.active {
+    background: linear-gradient(135deg, #7b2cbf, #5a189a);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(90, 24, 154, 0.35);
 }
 
 body.light-mode .nav-link:hover {
@@ -1155,7 +1330,7 @@ body.light-mode .theme-toggle:hover {
         font-size: 1.2rem;
     }
     
-    .logo-text {
+    .logo-labels {
         display: none;
     }
     
@@ -1166,7 +1341,8 @@ body.light-mode .theme-toggle:hover {
 
 .logo-text span {
     display: inline-block;
-    opacity: 0.4;
+    opacity: 0.65;
+    color: inherit;
     transform: translateY(0);
     animation: loader-letter-anim 2.4s infinite;
     z-index: 1;
@@ -1189,7 +1365,7 @@ body.light-mode .theme-toggle:hover {
 @keyframes loader-letter-anim {
     0%, 100% {
         transform: translateY(0);
-        opacity: 0.4;
+        opacity: 0.65;
     }
       20% {
     opacity: 1;
@@ -1197,8 +1373,8 @@ body.light-mode .theme-toggle:hover {
   }
     40% {
         transform: translateY(-5px);
-        color: #48039c;
-        opacity: 0.7;
+        color: #b892ff;
+        opacity: 0.85;
     }
 }
 

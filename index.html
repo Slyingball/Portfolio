@@ -27,33 +27,18 @@
             <div class="navbar-left">
 
                 <div class="logo">
-
-                    <div class="loader">
-
-                        <div class="cell d-0"></div>
-
-                        <div class="cell d-1"></div>
-
-                        <div class="cell d-2"></div>
-
-                        <div class="cell d-1"></div>
-
-                        <div class="cell d-2"></div>
-
-                        <div class="cell d-2"></div>
-
-                        <div class="cell d-3"></div>
-
-                        <div class="cell d-3"></div>
-
-                        <div class="cell d-4"></div>
-
+                    <div class="logo-emblem">
+                        <span class="logo-core"></span>
+                        <span class="logo-ring ring-one"></span>
+                        <span class="logo-ring ring-two"></span>
+                        <span class="logo-ring ring-three"></span>
                     </div>
-
-                            <span class="logo-text">
-                                <span>P</span><span>o</span><span>r</span><span>t</span><span>f</span><span>o</span><span>l</span><span>i</span><span>o</span>
-                            </span>
-                    
+                    <div class="logo-labels">
+                        <span class="logo-text">
+                            <span>P</span><span>o</span><span>r</span><span>t</span><span>f</span><span>o</span><span>l</span><span>i</span><span>o</span>
+                        </span>
+                        <span class="logo-subtitle">Terence M.</span>
+                    </div>
                 </div>
 
             </div>
@@ -306,11 +291,16 @@
 
         </div>
 
+        <div class="projects-toggle">
+            <button class="toggle-btn active" data-target="perso" aria-pressed="true">Projets Perso</button>
+            <button class="toggle-btn" data-target="ecole" aria-pressed="false">Projets Ecole</button>
+        </div>
+
 
 
         <div class="projects-grid">
 
-            <div class="project-card">
+            <div class="project-card" data-category="perso">
 
                 <h3>Portfolio Personnel</h3>
 
@@ -340,7 +330,7 @@
 
 
 
-            <div class="project-card">
+            <div class="project-card" data-category="ecole">
 
                 <h3>Application de Gestion RH</h3>
 
@@ -370,7 +360,7 @@
 
 
 
-            <div class="project-card">
+            <div class="project-card" data-category="perso">
 
                 <h3>Outil de Veille Cybersécurité</h3>
 
@@ -424,17 +414,13 @@
 
                         <h3>Stage de première année</h3>
 
-                        <h4>Entreprise XYZ - 2025</h4>
+                        <h4>Molosses d'Asnières - 2025</h4>
 
-                        <p>Développement d'une application web interne pour la gestion des ressources humaines.</p>
+                        <p>Refonte site Web molosses d'Asnières</p>
 
                         <ul>
 
-                            <li>Conception de base de données</li>
-
-                            <li>Création d'interfaces utilisateur</li>
-
-                            <li>Développement backend en PHP</li>
+                            <li>WordPress</li>
 
                         </ul>
 
@@ -1414,7 +1400,7 @@
 
                         <div class="cv-download">
 
-                            <a href="cv.html" class="btn-primary" download>
+                            <a href="cv.html" class="btn-primary">
 
                                 <i class="bx bx-download"></i> Télécharger mon CV
 

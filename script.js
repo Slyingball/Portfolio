@@ -130,6 +130,48 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Projects category toggle
+    const projectToggleButtons = document.querySelectorAll('.projects-toggle .toggle-btn');
+    const projectCards = document.querySelectorAll('.projects-grid .project-card');
+
+    if (projectToggleButtons.length && projectCards.length) {
+        const showAllProjects = () => {
+            projectCards.forEach(card => card.classList.remove('is-hidden'));
+        };
+
+        const updateProjectsDisplay = (category) => {
+            projectCards.forEach(card => {
+                const isMatch = card.dataset.category === category;
+                card.classList.toggle('is-hidden', !isMatch);
+            });
+        };
+
+        projectToggleButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.classList.contains('active')) {
+                    projectToggleButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-pressed', 'false');
+                    });
+                    showAllProjects();
+                    return;
+                }
+
+                projectToggleButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-pressed', 'false');
+                });
+
+                button.classList.add('active');
+                button.setAttribute('aria-pressed', 'true');
+                updateProjectsDisplay(button.dataset.target);
+            });
+        });
+
+        const defaultCategory = document.querySelector('.projects-toggle .toggle-btn.active')?.dataset.target || projectToggleButtons[0].dataset.target;
+        updateProjectsDisplay(defaultCategory);
+    }
+
     // Close mobile menu when clicking outside
     document.addEventListener('click', function(event) {
         if (window.innerWidth <= 768) {
