@@ -641,24 +641,54 @@ body.light-mode .project-links .code-link {
 
 .timeline {
     position: relative;
-    padding-left: 60px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    column-gap: 120px;
+    row-gap: 70px;
+    padding: 48px 0 20px;
+    isolation: isolate;
 }
 
 .timeline::before {
     content: "";
     position: absolute;
-    left: 20px;
+    left: 50%;
     top: 0;
     bottom: 0;
-    width: 3px;
-    background: linear-gradient(180deg, transparent 0%, #667eea 10%, #764ba2 50%, #667eea 90%, transparent 100%);
+    width: 4px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: linear-gradient(180deg,
+            rgba(102, 126, 234, 0) 0%,
+            rgba(118, 75, 162, 0.7) 20%,
+            rgba(62, 198, 240, 0.8) 50%,
+            rgba(118, 75, 162, 0.7) 80%,
+            rgba(102, 126, 234, 0) 100%);
+    box-shadow: 0 0 30px rgba(96, 122, 255, 0.4);
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     opacity: 0;
     animation: timelineFadeInUp 0.6s ease forwards;
+    max-width: 520px;
+}
+
+.timeline-item:nth-child(odd) {
+    grid-column: 1;
+    align-items: flex-end;
+    text-align: right;
+    padding-right: 80px;
+}
+
+.timeline-item:nth-child(even) {
+    grid-column: 2;
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 80px;
 }
 
 .timeline-item:nth-child(1) { animation-delay: 0.1s; }
@@ -671,26 +701,52 @@ body.light-mode .project-links .code-link {
 
 .timeline-dot {
     position: absolute;
-    left: -48px;
-    top: 8px;
-    width: 18px;
-    height: 18px;
+    top: 50%;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    box-shadow: 0 0 0 6px rgba(102, 126, 234, 0.2), 0 0 20px rgba(102, 126, 234, 0.5);
-    animation: timelinePulse 2s infinite;
-    z-index: 2;
+    background: conic-gradient(from 120deg, #fbbf24, #667eea, #7c3aed, #38bdf8, #fbbf24);
+    border: 3px solid rgba(4, 7, 26, 0.95);
+    box-shadow:
+        0 0 25px rgba(95, 113, 255, 0.45),
+        0 10px 25px rgba(0, 0, 0, 0.45);
+    transform: translateY(-50%);
+    animation: timelinePulse 3.5s ease-in-out infinite;
+    z-index: 3;
+}
+
+.timeline-dot::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: inherit;
+    opacity: 0.45;
+    filter: blur(12px);
+    z-index: -1;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+    right: -70px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -70px;
 }
 
 .timeline-card {
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 28px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 28px;
+    padding: 32px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    box-shadow:
+        0 25px 70px rgba(5, 10, 45, 0.45),
+        0 0 35px rgba(103, 95, 255, 0.2);
 }
 
 .timeline-card::before {
@@ -699,21 +755,22 @@ body.light-mode .project-links .code-link {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.1));
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .timeline-card:hover::before {
-    transform: scaleX(1);
+    opacity: 1;
 }
 
 .timeline-card:hover {
-    transform: translateX(8px) translateY(-4px);
-    border-color: rgba(102, 126, 234, 0.4);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(102, 126, 234, 0.2);
+    transform: translateY(-10px) scale(1.01);
+    border-color: rgba(102, 126, 234, 0.6);
+    box-shadow:
+        0 35px 85px rgba(5, 10, 45, 0.55),
+        0 0 45px rgba(103, 95, 255, 0.35);
 }
 
 .card-header {
@@ -828,40 +885,94 @@ body.light-mode .project-links .code-link {
 }
 
 @keyframes timelinePulse {
-    0%, 100% {
-        box-shadow: 0 0 0 6px rgba(102, 126, 234, 0.2), 0 0 20px rgba(102, 126, 234, 0.5);
+    0% {
+        box-shadow:
+            0 0 0 0 rgba(99, 102, 241, 0.45),
+            0 12px 25px rgba(0, 0, 0, 0.5);
+        transform: translateY(-50%) scale(0.95);
     }
     50% {
-        box-shadow: 0 0 0 10px rgba(102, 126, 234, 0.1), 0 0 30px rgba(102, 126, 234, 0.7);
+        box-shadow:
+            0 0 0 12px rgba(99, 102, 241, 0.18),
+            0 18px 30px rgba(0, 0, 0, 0.55);
+        transform: translateY(-50%) scale(1.08);
+    }
+    100% {
+        box-shadow:
+            0 0 0 0 rgba(99, 102, 241, 0),
+            0 12px 25px rgba(0, 0, 0, 0.5);
+        transform: translateY(-50%) scale(0.95);
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .timeline {
-        padding-left: 40px;
-    }
-
-    .timeline::before {
-        left: 12px;
-    }
-
-    .timeline-dot {
-        left: -36px;
-        width: 14px;
-        height: 14px;
+        column-gap: 80px;
+        row-gap: 60px;
     }
 
     .timeline-card {
-        padding: 20px;
+        padding: 28px;
+    }
+}
+
+@media (max-width: 900px) {
+    .timeline {
+        grid-template-columns: minmax(0, 1fr);
+        column-gap: 0;
+        padding: 20px 30px;
+    }
+
+    .timeline::before {
+        left: 32px;
+        transform: none;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        grid-column: 1;
+        align-items: flex-start;
+        text-align: left;
+        padding: 0 0 0 70px;
+    }
+
+    .timeline-card {
+        margin: 0;
+    }
+
+    .timeline-item .timeline-dot {
+        left: 4px;
+        right: auto;
     }
 
     .card-header {
         flex-direction: column;
         align-items: flex-start;
     }
+}
 
-    .card-title {
-        font-size: 1.2rem;
+@media (max-width: 560px) {
+    .timeline {
+        padding: 10px 16px;
+    }
+
+    .timeline::before {
+        left: 24px;
+    }
+
+    .timeline-item {
+        padding-left: 58px;
+    }
+
+    .timeline-dot {
+        width: 20px;
+        height: 20px;
+    }
+
+    .timeline-card {
+        padding: 22px;
+        border-radius: 22px;
     }
 }
 
