@@ -191,17 +191,17 @@
             position: fixed;
             top: 24px;
             left: 24px;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 999px;
             border: 1px solid rgba(255, 255, 255, 0.35);
             background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.35), rgba(15, 12, 41, 0.8));
             color: #ffffff;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 1rem;
+            font-weight: 500;
             text-decoration: none;
-            font-size: 1.2rem;
             box-shadow: 0 18px 35px rgba(0, 0, 0, 0.55);
             backdrop-filter: blur(12px);
             z-index: 2;
@@ -238,8 +238,7 @@
         }
 
         .back-arrow span {
-            font-size: 0.85rem;
-            margin-left: 6px;
+            font-size: 0.95rem;
         }
 
         @media (max-width: 768px) {
@@ -254,12 +253,9 @@
             .back-arrow {
                 top: 18px;
                 left: 18px;
-                width: 42px;
-                height: 42px;
-            }
-
-            .back-arrow span {
-                display: none;
+                padding: 10px 16px;
+                font-size: 0.95rem;
+                gap: 6px;
             }
         }
     </style>
@@ -272,7 +268,7 @@
     <main class="cv-wrapper">
         <section class="cv-intro">
             <div class="eyebrow">cv en un clic</div>
-            <h1>CV Télécharger ci-dessous</h1>
+            <h1>CV t&#233;l&#233;charger ci-dessous</h1>
         </section>
 
         <section class="cv-grid" aria-label="Formats de CV disponibles">

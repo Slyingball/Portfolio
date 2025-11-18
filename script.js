@@ -172,6 +172,93 @@ document.addEventListener('DOMContentLoaded', function() {
         updateProjectsDisplay(defaultCategory);
     }
 
+    // Tableau de synthese preview & download
+    const synthesisBtn = document.getElementById('openSynthesisPreview');
+    const synthesisPreview = document.getElementById('synthesisPreview');
+    const closeSynthesisBtn = document.getElementById('closeSynthesisPreview');
+    const downloadSynthesisBtn = document.getElementById('downloadSynthesisPdf');
+    const synthesisContent = document.getElementById('synthesisPreviewContent');
+
+    if (synthesisBtn && synthesisPreview) {
+        const openPreview = () => {
+            synthesisPreview.hidden = false;
+            requestAnimationFrame(() => {
+                synthesisPreview.classList.add('is-visible');
+            });
+            synthesisPreview.setAttribute('aria-hidden', 'false');
+            synthesisBtn.setAttribute('aria-expanded', 'true');
+        };
+
+        const closePreview = () => {
+            synthesisPreview.classList.remove('is-visible');
+            synthesisPreview.setAttribute('aria-hidden', 'true');
+            synthesisBtn.setAttribute('aria-expanded', 'false');
+            setTimeout(() => {
+                if (!synthesisPreview.classList.contains('is-visible')) {
+                    synthesisPreview.hidden = true;
+                }
+            }, 250);
+        };
+
+        synthesisBtn.addEventListener('click', () => {
+            if (synthesisPreview.hidden || synthesisPreview.getAttribute('aria-hidden') === 'true') {
+                openPreview();
+                synthesisPreview.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                closePreview();
+            }
+        });
+
+        closeSynthesisBtn?.addEventListener('click', closePreview);
+
+        downloadSynthesisBtn?.addEventListener('click', () => {
+            const printableContent = synthesisContent?.innerHTML?.trim() || '<p>Aucun contenu disponible pour le moment.</p>';
+            const printWindow = window.open('', '_blank', 'width=900,height=650');
+
+            if (!printWindow) {
+                alert('Veuillez autoriser les fen\u00EAtres pop-up pour t\u00E9l\u00E9charger le tableau.');
+                return;
+            }
+
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Tableau de synth\u00E8se</title>
+                        <style>
+                            body {
+                                font-family: 'Segoe UI', Arial, sans-serif;
+                                padding: 40px;
+                                color: #0f172a;
+                                background: #f8fafc;
+                            }
+                            h1 {
+                                margin-bottom: 24px;
+                                color: #111827;
+                            }
+                            .synthesis-wrapper {
+                                border: 1px solid #e5e7eb;
+                                border-radius: 16px;
+                                padding: 24px;
+                                background: #fff;
+                                box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>Tableau de synth\u00E8se</h1>
+                        <div class="synthesis-wrapper">
+                            ${printableContent}
+                        </div>
+                    </body>
+                </html>
+            `);
+
+            printWindow.document.close();
+            printWindow.focus();
+            printWindow.print();
+        });
+    }
+
     // Close mobile menu when clicking outside
     document.addEventListener('click', function(event) {
         if (window.innerWidth <= 768) {

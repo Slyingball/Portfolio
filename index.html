@@ -61,7 +61,7 @@
 
                     <li><a href="#certification" class="nav-link" data-section="certification">Certification</a></li>
 
-                    <li><a href="#competence" class="nav-link" data-section="competence">CompÃ©tence</a></li>
+                    <li><a href="#competence" class="nav-link" data-section="competence">Compétence</a></li>
 
                     <li><a href="#veille" class="nav-link" data-section="veille">Veille</a></li>
 
@@ -123,13 +123,13 @@
 
                 <h1 class="section-title">Bienvenue sur mon Portfolio</h1>
 
-                <h2 class="section-subtitle">DÃ©veloppeur Web & Applications</h2>
+                <h2 class="section-subtitle">Développeur Web & Applications</h2>
 
                 <div class="section-text">
 
-                    <p>Je suis Terence, Ã©tudiant en BTS SIO option SLAM, passionnÃ© par le dÃ©veloppement web et la programmation.</p>
+                    <p>Je suis Terence, étudiant en BTS SIO option SLAM, passionné par le développement web et la programmation.</p>
 
-                    <p>DÃ©couvrez mon parcours, mes compÃ©tences et mes rÃ©alisations Ã  travers ce portfolio.</p>
+                    <p>Découvrez mon parcours, mes compétences et mes réalisations à travers ce portfolio.</p>
 
                 </div>
 
@@ -157,9 +157,9 @@
 
                 <div class="section-text">
 
-                    <p>Ã‰tudiant en BTS SIO, je me spÃ©cialise dans le dÃ©veloppement et CybersÃ©curitÃ©</p>
+                    <p>Étudiant en BTS SIO, je me spécialise dans le développement et Cybersécurité</p>
 
-                    <p>Ma passion pour l'informatique m'a conduit Ã  dÃ©velopper diverses compÃ©tences techniques et Ã  participer Ã  plusieurs projets enrichissants.</p>
+                    <p>Ma passion pour l'informatique m'a conduit à développer diverses compétences techniques et à participer à plusieurs projets enrichissants.</p>
 
                 </div>
 
@@ -183,15 +183,15 @@
 
                     <div class="profile-skills">
 
-                        <h3>CompÃ©tences clÃ©s</h3>
+                        <h3>Compétences clés</h3>
 
                         <ul>
 
-                            <li>DÃ©veloppement Web</li>
+                            <li>Développement Web</li>
 
-                            <li>Programmation OrientÃ©e Objet</li>
+                            <li>Programmation Orientée Objet</li>
 
-                            <li>Gestion de Bases de DonnÃ©es</li>
+                            <li>Gestion de Bases de Données</li>
 
                         </ul>
 
@@ -217,7 +217,7 @@
 
                 <div class="section-text">
 
-                    <p>Le BTS SIO est une formation de niveau Bac+2 qui prÃ©pare aux mÃ©tiers de l'informatique.</p>
+                    <p>Le BTS SIO est une formation de niveau Bac+2 qui prépare aux métiers de l'informatique.</p>
 
                 </div>
 
@@ -225,17 +225,17 @@
 
                     <div class="option-card">
 
-                        <h3>Option SLAM</h3>
+                        <h3 class="neon-slam">Option SLAM</h3>
 
-                        <p>Solutions Logicielles et Applications MÃ©tiers</p>
+                        <p>Solutions Logicielles et Applications Métiers</p>
 
                         <ul>
 
-                            <li>DÃ©veloppement d'applications</li>
+                            <li>Développement d'applications</li>
 
                             <li>Programmation web</li>
 
-                            <li>Gestion de bases de donnÃ©es</li>
+                            <li>Gestion de bases de données</li>
 
                         </ul>
 
@@ -245,15 +245,15 @@
 
                         <h3>Option SISR</h3>
 
-                        <p>Solutions d'Infrastructure, SystÃ¨mes et RÃ©seaux</p>
+                        <p>Solutions d'Infrastructure, Systèmes et Réseaux</p>
 
                         <ul>
 
-                            <li>Administration systÃ¨me</li>
+                            <li>Administration système</li>
 
-                            <li>Configuration rÃ©seaux</li>
+                            <li>Configuration réseaux</li>
 
-                            <li>SÃ©curitÃ© informatique</li>
+                            <li>Sécurité informatique</li>
 
                         </ul>
 
@@ -273,22 +273,61 @@
 
     <div class="section-content">
 
-        <h1 class="section-title">Projets</h1>
+        <div class="section-title-bar">
+            <h1 class="section-title">Projets</h1>
+            <button type="button"
+                    class="synthesis-btn"
+                    id="openSynthesisPreview"
+                    aria-controls="synthesisPreview"
+                    aria-expanded="false">
+                <i class='bx bxs-spreadsheet' aria-hidden="true"></i>
+                Tableau de synthèse
+            </button>
+        </div>
 
-        <h2 class="section-subtitle">Mes rÃ©alisations</h2>
+        <h2 class="section-subtitle">Mes réalisations</h2>
 
         <div class="section-text">
 
             <p>
 
-                Voici une sÃ©lection de projets rÃ©alisÃ©s dans le cadre de ma formation, de mes stages 
+                Voici une sélection de projets réalisés dans le cadre de ma formation, de mes stages 
 
-                et de mon apprentissage personnel. Chaque projet illustre mes compÃ©tences en dÃ©veloppement,
+                et de mon apprentissage personnel. Chaque projet illustre mes compétences en développement,
 
-                en conception dâ€™interface et en bonnes pratiques.
+                en conception d’interface et en bonnes pratiques.
 
             </p>
 
+        </div>
+
+        <div class="synthesis-preview" id="synthesisPreview" hidden aria-hidden="true">
+            <div class="synthesis-preview__header">
+                <div>
+                    <p class="synthesis-preview__eyebrow">Prévisualisation</p>
+                    <h3>Tableau de synthèse</h3>
+                </div>
+                <button type="button"
+                        class="close-preview"
+                        id="closeSynthesisPreview"
+                        aria-label="Fermer la prévisualisation">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="synthesis-preview__body" id="synthesisPreviewContent">
+                <p>
+                    Ce cadre accueillera votre tableau de synthèse détaillé (références projets, compétences, technologies, etc.).
+                    Importez simplement votre tableau ici pour qu’il soit consultable avant téléchargement.
+                </p>
+            </div>
+            <div class="synthesis-preview__actions">
+                <button type="button"
+                        class="btn-primary download-synthesis"
+                        id="downloadSynthesisPdf">
+                    <i class='bx bxs-download'></i>
+                    Télécharger en PDF
+                </button>
+            </div>
         </div>
 
         <div class="projects-toggle">
@@ -306,9 +345,9 @@
 
                 <p>
 
-                    Site web moderne en one-page prÃ©sentant mon profil, mes compÃ©tences et mes projets,
+                    Site web moderne en one-page présentant mon profil, mes compétences et mes projets,
 
-                    dÃ©veloppÃ© en HTML, CSS et JavaScript avec animations et mode sombre/clair.
+                    développé en HTML, CSS et JavaScript avec animations et mode sombre/clair.
 
                 </p>
 
@@ -336,9 +375,9 @@
 
                 <p>
 
-                    Application web interne permettant de gÃ©rer les employÃ©s, congÃ©s et contrats,
+                    Application web interne permettant de gérer les employés, congés et contrats,
 
-                    avec interface dâ€™administration sÃ©curisÃ©e.
+                    avec interface d’administration sécurisée.
 
                 </p>
 
@@ -352,7 +391,7 @@
 
                     <a href="#" class="btn-primary">Documentation</a>
 
-                    <a href="#" class="code-link">BientÃ´t disponible</a>
+                    <a href="#" class="code-link">Bientôt disponible</a>
 
                 </div>
 
@@ -362,13 +401,13 @@
 
             <div class="project-card" data-category="perso">
 
-                <h3>Outil de Veille CybersÃ©curitÃ©</h3>
+                <h3>Outil de Veille Cybersécurité</h3>
 
                 <p>
 
-                    Dashboard de veille automatisÃ©e rÃ©cupÃ©rant des articles et ressources sur lâ€™IA, 
+                    Dashboard de veille automatisée récupérant des articles et ressources sur l’IA, 
 
-                    la cybersÃ©curitÃ© et le quantique.
+                    la cybersécurité et le quantique.
 
                 </p>
 
@@ -380,9 +419,9 @@
 
                 <div class="project-links">
 
-                    <a href="#" class="btn-primary">PrÃ©sentation</a>
+                    <a href="#" class="btn-primary">Présentation</a>
 
-                    <a href="#" class="code-link">BientÃ´t disponible</a>
+                    <a href="#" class="code-link">Bientôt disponible</a>
 
                 </div>
 
@@ -406,17 +445,17 @@
 
                 <h1 class="section-title">Mes Stages</h1>
 
-                <h2 class="section-subtitle">ExpÃ©riences professionnelles</h2>
+                <h2 class="section-subtitle">Expériences professionnelles</h2>
 
                 <div class="stages-timeline">
 
                     <div class="stage-card">
 
-                        <h3>Stage de premiÃ¨re annÃ©e</h3>
+                        <h3>Stage de première année</h3>
 
-                        <h4>Molosses d'AsniÃ¨res - 2025</h4>
+                        <h4>Molosses d'Asnières - 2025</h4>
 
-                        <p>Refonte site Web molosses d'AsniÃ¨res</p>
+                        <p>Refonte site Web molosses d'Asnières</p>
 
                         <ul>
 
@@ -428,7 +467,7 @@
 
                     <div class="stage-card">
 
-                        <h3>Stage de deuxiÃ¨me annÃ©e</h3>
+                        <h3>Stage de deuxième année</h3>
 
                         <h4>Entreprise ABC - 2026</h4>
 
@@ -436,7 +475,7 @@
 
                         <ul>
 
-                            <li>IntÃ©gration de designs responsive</li>
+                            <li>Intégration de designs responsive</li>
 
                             <li>Configuration de la plateforme e-commerce</li>
 
@@ -466,45 +505,60 @@
 
                 <div class="certifications-grid">
 
-                    <div class="certification-card">
+                    <a class="certification-card"
+                       href="https://secnumacademie.gouv.fr/"
+                       target="_blank"
+                       rel="noopener">
 
                         <h3>MOOC de l'ANSSI</h3>
 
                         <p>Secnumacademie - 2024</p>
 
-                    </div>
+                    </a>
 
-                    <div class="certification-card">
+                    <a class="certification-card"
+                       href="https://www.netacad.com/courses/introduction-to-modern-ai?courseLang=en-US#"
+                       target="_blank"
+                       rel="noopener">
 
                         <h3>Introduction to Modern AI</h3>
 
                         <p>Netacad - 2025</p>
 
-                    </div>
+                    </a>
 
-                    <div class="certification-card">
+                    <a class="certification-card"
+                       href="https://www.netacad.com/courses/cybersecurity/introduction-cybersecurity"
+                       target="_blank"
+                       rel="noopener">
 
-                        <h3>Introduction Ã  la CybersÃ©curitÃ©</h3>
+                        <h3>Introduction à la Cybersécurité</h3>
 
                         <p>Netacad - 2025</p>
 
-                    </div>
+                    </a>
 
-                    <div class="certification-card">
+                    <a class="certification-card"
+                       href="udemy.com/course/formation-complete-python/"
+                       target="_blank"
+                       rel="noopener">
 
                         <h3>Python</h3>
 
                         <p>Udemy - 2025</p>
 
-                    </div>
+                    </a>
 
-                    <div class="certification-card">
+                    <a class="certification-card"
+                       href="https://aws.amazon.com/certification/"
+                       target="_blank"
+                       rel="noopener">
 
                         <h3>AWS</h3>
 
                         <p>AWS - 2025</p>
 
-                    </div>
+                    </a>
 
                 </div>
 
@@ -514,15 +568,15 @@
 
 
 
-        <!-- Section CompÃ©tence -->
+        <!-- Section Compétence -->
 
         <section id="competence" class="section-container">
 
             <div class="section-content">
 
-                <h1 class="section-title">CompÃ©tences</h1>
+                <h1 class="section-title">Compétences</h1>
 
-                <h2 class="section-subtitle">Technologies maÃ®trisÃ©es</h2>
+                <h2 class="section-subtitle">Technologies maîtrisées</h2>
 
                 <div class="competences-container">
 
@@ -625,729 +679,178 @@
 
 
         <!-- Section Veille Informatique -->
-
-
-
         <section id="veille" class="section-container">
-
-
-
             <div class="section-content">
-
-
-
                 <h1 class="section-title">Veille Informatique</h1>
-
-
-
                 <h2 class="section-subtitle">Physique quantique, IA &amp; cybers&eacute;curit&eacute;</h2>
-
-
-
-
-
-
-
                 <div class="veille-content">
-
-
-
                     <div class="timeline-header">
-
-                        <h3>Focus 2024&nbsp;-&nbsp;2025</h3>
-
-
-
+                        <h3>Focus 2025</h3>
                         <p>
-
-
-
                             Cette veille technologique cartographie les convergences entre traitements quantiques, intelligence artificielle
-
-
-
                             et cadres de cybers&eacute;curit&eacute; afin d'anticiper les ruptures industrielles, les besoins en comp&eacute;tences
-
-
-
                             et les obligations r&eacute;glementaires.
-
-
-
                         </p>
-
-
-
                     </div>
-
-
-
-
-
-
-
                     <div class="timeline">
-
-
-
                         <article class="timeline-item">
-
-
-
                             <div class="timeline-dot" aria-hidden="true"></div>
-
-
-
                             <div class="timeline-card">
-
-
-
                                 <div class="card-header">
-
-
-
                                     <span class="date">Avril 2025</span>
-
-
-
                                     <span class="category">Perspectives &amp; talents</span>
-
-
-
                                 </div>
-
-
-
                                 <h3 class="card-title">Programmes intensifs en informatique quantique</h3>
-
-
-
                                 <p class="card-description">
-
-
-
                                     Les acteurs du secteur (Classiq, IBM, Google, Microsoft) acc&eacute;l&egrave;rent les bootcamps afin d'anticiper
-
-
-
                                     la p&eacute;nurie annonc&eacute;e de 250&nbsp;000 sp&eacute;cialistes quantiques d'ici 2030.
-
-
-
                                 </p>
-
-
-
                                 <div class="tags">
-
-
-
                                     <span class="tag">Quantum workforce</span>
-
-
-
                                     <span class="tag">Upskilling</span>
-
-
-
                                 </div>
-
-
-
                                 <a href="https://www.businessinsider.com/quantum-startups-learning-from-ai-company-mistakes-finding-recruiting-talent-2025-4"
-
-
-
                                    target="_blank"
-
-
-
                                    rel="noopener"
-
-
-
                                    class="card-link">Business Insider</a>
-
-
-
                             </div>
-
-
-
                         </article>
-
-
-
-
-
-
-
                         <article class="timeline-item">
-
-
-
                             <div class="timeline-dot" aria-hidden="true"></div>
-
-
-
                             <div class="timeline-card">
-
-
-
                                 <div class="card-header">
-
-
-
                                     <span class="date">Mars 2025</span>
-
-
-
                                     <span class="category">&Eacute;cosyst&egrave;me</span>
-
-
-
                                 </div>
-
-
-
                                 <h3 class="card-title">Institut Courtois x Mila - IA &amp; quantique</h3>
-
-
-
                                 <p class="card-description">
-
-
-
                                     La conf&eacute;rence &laquo;&nbsp;&Agrave; l'intersection de l'IA et de la Quantique&nbsp;&raquo; met en avant les synergies R&amp;D,
-
-
-
                                     les cas d'usage prioritaires et les d&eacute;fis scientifiques communs.
-
-
-
                                 </p>
-
-
-
                                 <div class="tags">
-
-
-
                                     <span class="tag">IA</span>
-
-
-
                                     <span class="tag">Physique quantique</span>
-
-
-
                                 </div>
-
-
-
                                 <a href="https://institut-courtois.umontreal.ca/a-lintersection-de-lia-et-de-la-quantique/"
-
-
-
                                    target="_blank"
-
-
-
                                    rel="noopener"
-
-
-
                                    class="card-link">Institut Courtois</a>
-
-
-
                             </div>
-
-
-
                         </article>
-
-
-
-
-
-
-
                         <article class="timeline-item">
-
-
-
                             <div class="timeline-dot" aria-hidden="true"></div>
-
-
-
                             <div class="timeline-card">
-
-
-
                                 <div class="card-header">
-
-
-
                                     <span class="date">F&eacute;vrier 2025</span>
-
-
-
                                     <span class="category">Hardware</span>
-
-
-
                                 </div>
-
-
-
                                 <h3 class="card-title">Microsoft pr&eacute;sente la puce quantique Majorana 1</h3>
-
-
-
                                 <p class="card-description">
-
-
-
                                     Bas&eacute;e sur un nouvel &eacute;tat de la mati&egrave;re, la puce vise une meilleure stabilit&eacute; des qubits
-
-
-
                                     et une feuille de route r&eacute;aliste vers la correction d'erreurs.
-
-
-
                                 </p>
-
-
-
                                 <div class="tags">
-
-
-
                                     <span class="tag">Qubits</span>
-
-
-
                                     <span class="tag">Mat&eacute;riaux</span>
-
-
-
                                 </div>
-
-
-
                                 <a href="https://www.businessinsider.com/satya-nadella-microsoft-new-majorana-chip-quantum-breakthrough-state-matter-2025-2"
-
-
-
                                    target="_blank"
-
-
-
                                    rel="noopener"
-
-
-
                                    class="card-link">Business Insider</a>
-
-
-
                             </div>
-
-
-
                         </article>
-
-
-
-
-
-
-
                         <article class="timeline-item">
-
-
-
                             <div class="timeline-dot" aria-hidden="true"></div>
-
-
-
                             <div class="timeline-card">
-
-
-
                                 <div class="card-header">
-
-
-
                                     <span class="date">Janvier 2025</span>
-
-
-
                                     <span class="category">Applications</span>
-
-
-
                                 </div>
-
-
-
                                 <h3 class="card-title">TAROQQO et optique adaptative pour les liens satellitaires</h3>
-
-
-
                                 <p class="card-description">
-
-
-
                                     Une IA pr&eacute;dit les turbulences atmosph&eacute;riques tandis qu'un miroir d&eacute;formable stabilise les faisceaux quantiques,
-
-
-
                                     ouvrant la voie &agrave; des communications longue distance s&eacute;curis&eacute;es.
-
-
-
                                 </p>
-
-
-
                                 <div class="tags">
-
-
-
                                     <span class="tag">Free-space optics</span>
-
-
-
                                     <span class="tag">IA embarqu&eacute;e</span>
-
-
-
                                 </div>
-
-
-
                                 <a href="https://phys.org/news/2025-03-ai-optics-propel-free-space.html"
-
-
-
                                    target="_blank"
-
-
-
                                    rel="noopener"
-
-
-
                                    class="card-link">Phys.org</a>
-
-
-
                             </div>
-
-
-
                         </article>
-
-
-
-
-
-
-
                         <article class="timeline-item">
-
-
-
                             <div class="timeline-dot" aria-hidden="true"></div>
-
-
-
                             <div class="timeline-card">
-
-
-
                                 <div class="card-header">
-
-
-
                                     <span class="date">Novembre 2024</span>
-
-
-
                                     <span class="category">Conformit&eacute;</span>
-
-
-
                                 </div>
-
-
-
                                 <h3 class="card-title">CNIL - bonnes pratiques pour l'IA g&eacute;n&eacute;rative</h3>
-
-
-
                                 <p class="card-description">
-
-
-
                                     Les recommandations insistent sur la minimisation des donn&eacute;es, la tra&ccedil;abilit&eacute; des prompts
-
-
-
                                     et l'&eacute;valuation continue des biais avant tout d&eacute;ploiement.
-
-
-
                                 </p>
-
-
-
                                 <div class="tags">
-
-
-
                                     <span class="tag">IA responsable</span>
-
-
-
                                     <span class="tag">Protection des donn&eacute;es</span>
-
-
-
                                 </div>
-
-
-
                                 <a href="https://www.cnil.fr/fr/intelligence-artificielle-generative-les-bonnes-pratiques-pour-proteger-les-donnees-personnelles"
-
-
-
                                    target="_blank"
-
-
-
                                    rel="noopener"
-
-
-
                                    class="card-link">CNIL</a>
-
-
-
                             </div>
-
-
-
                         </article>
-
-
-
-
-
-
-
                         <article class="timeline-item">
-
-
-
                             <div class="timeline-dot" aria-hidden="true"></div>
-
-
-
                             <div class="timeline-card">
-
-
-
                                 <div class="card-header">
-
-
-
                                     <span class="date">Octobre 2024</span>
-
-
-
                                     <span class="category">Cybermenaces</span>
-
-
-
                                 </div>
-
-
-
                                 <h3 class="card-title">ENISA Threat Landscape 2024</h3>
-
-
-
                                 <p class="card-description">
-
-
-
                                     Le rapport pointe les attaques par LLM malveillants, les deepfakes cha&icirc;ne d'approvisionnement
-
-
-
                                     et l'urgence du chiffrement post-quantique comme risques prioritaires.
-
-
-
                                 </p>
-
-
-
                                 <div class="tags">
-
-
-
                                     <span class="tag">ENISA</span>
-
-
-
                                     <span class="tag">Threat intel</span>
-
-
-
                                 </div>
-
-
-
                                 <a href="https://www.enisa.europa.eu/publications/enisa-threat-landscape-2024"
-
-
-
                                    target="_blank"
-
-
-
                                    rel="noopener"
-
-
-
                                    class="card-link">Rapport ENISA</a>
-
-
-
                             </div>
-
-
-
                         </article>
-
-
-
-
-
-
-
                         <article class="timeline-item">
-
-
-
                             <div class="timeline-dot" aria-hidden="true"></div>
-
-
-
                             <div class="timeline-card">
-
-
-
                                 <div class="card-header">
-
-
-
                                     <span class="date">F&eacute;vrier 2024</span>
-
-
-
                                     <span class="category">Cadre strat&eacute;gique</span>
-
-
-
                                 </div>
-
-
-
                                 <h3 class="card-title">NIST Cybersecurity Framework 2.0</h3>
-
-
-
                                 <p class="card-description">
-
-
-
                                     La version 2.0 introduit la fonction &laquo;&nbsp;Govern&nbsp;&raquo;, renforce la surveillance continue des syst&egrave;mes IA
-
-
-
                                     et propose des profils types pour industrialiser la gestion des risques.
-
-
-
                                 </p>
-
-
-
                                 <div class="tags">
-
-
-
                                     <span class="tag">Gouvernance</span>
-
-
-
                                     <span class="tag">Post-quantique</span>
-
-
-
                                 </div>
-
-
-
                                 <a href="https://www.nist.gov/news-events/news/2024/02/nist-releases-cybersecurity-framework-20"
-
-
-
                                    target="_blank"
-
-
-
                                    rel="noopener"
-
-
-
                                    class="card-link">NIST</a>
-
-
-
                             </div>
-
-
-
                         </article>
-
-
-
                     </div>
-
-
-
                 </div>
-
-
-
             </div>
-
-
-
         </section>
-
-
-
-
-
 
 
         <!-- Section Contact -->
@@ -1396,13 +899,13 @@
 
                         </div>
 
-                            <!-- Bouton de tÃ©lÃ©chargement du CV -->
+                            <!-- Bouton de téléchargement du CV -->
 
                         <div class="cv-download">
 
                             <a href="cv.html" class="btn-primary">
 
-                                <i class="bx bx-download"></i> TÃ©lÃ©charger mon CV
+                                <i class="bx bx-download"></i> Télécharger mon CV
 
                             </a>
 
