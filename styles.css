@@ -1673,14 +1673,6 @@ body.light-mode .theme-toggle:hover {
     color: #fff;
 }
 
-body.light-mode .timeline-header h3 {
-    color: #5a189a;
-}
-
-body.light-mode .timeline-header p {
-    color: #2f2a44;
-}
-
 /* ==================== RESPONSIVE DESIGN ==================== */
 @media (max-width: 1024px) {
     .nav-menu {
