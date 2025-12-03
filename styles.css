@@ -810,512 +810,233 @@ body.light-mode .project-links .code-link {
     width: 100%;
 }
 
-/* ==================== VEILLE SECTION ==================== */
+/* ==================== VEILLE SECTION (CORRECTIF FINAL) ==================== */
+
+/* 1. FORCE l'affichage de la section (au cas où le JS la cache) */
+#veille.section-container {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    visibility: visible !important;
+}
+
 .veille-content {
-    margin-top: 30px;
+    margin-top: 40px;
+    width: 100%;
+    position: relative;
 }
 
 .timeline-header {
     text-align: center;
-    margin-bottom: 40px;
-    animation: timelineFadeInDown 0.8s ease;
+    margin-bottom: 50px;
 }
 
 .timeline-header h3 {
-    font-size: 1rem;
-    letter-spacing: 0.3em;
+    color: #d8c7ff;
     text-transform: uppercase;
-    color: #b8b8d4;
-    margin-bottom: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
 }
 
 .timeline-header p {
-    font-size: 1.05rem;
-    color: #d7d7fb;
-    max-width: 720px;
-    margin: 0 auto;
-    line-height: 1.7;
+    color: #e0e0e0;
+    opacity: 0.9;
 }
 
+/* 2. Conteneur de la frise */
 .timeline {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 110px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 70px 0 50px;
-    isolation: isolate;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
 }
 
+/* La ligne centrale (parfaitement au milieu) */
 .timeline::before {
     content: "";
     position: absolute;
-    left: 50%;
     top: 0;
     bottom: 0;
-    width: 6px;
+    left: 50%;
+    width: 4px;
+    background: #c084fc; /* Couleur violette visible */
     transform: translateX(-50%);
-    border-radius: 999px;
-    background: linear-gradient(180deg, #4ea8de 0%, #38bdf8 28%, #34d399 58%, #4f46e5 100%);
-    box-shadow: 0 0 45px rgba(56, 189, 248, 0.35);
+    border-radius: 2px;
+    box-shadow: 0 0 15px rgba(192, 132, 252, 0.6);
+    z-index: 1;
 }
 
+/* 3. Les Éléments (Gauche et Droite) */
 .timeline-item {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    opacity: 1;
-    width: min(520px, calc(50% - 80px));
-    padding: 12px 0;
-    --timeline-accent: #6d5dfc;
-    --timeline-accent-soft: #6d5dfc33;
+    width: 50%; /* Prend exactement la moitié */
+    padding: 20px 50px; /* Espace pour ne pas coller à la ligne */
+    box-sizing: border-box;
+    z-index: 2;
+    
+    /* FORCE LA VISIBILITÉ DES ITEMS */
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    animation: none !important;
 }
 
+/* Items Impairs (Gauche) */
 .timeline-item:nth-child(odd) {
-    align-self: flex-start;
-    align-items: flex-end;
-    text-align: right;
-    padding-right: 130px;
+    align-self: flex-start; /* Collé à gauche */
+    text-align: right;      /* Texte vers la droite */
 }
 
+/* Items Pairs (Droite) */
 .timeline-item:nth-child(even) {
-    align-self: flex-end;
-    align-items: flex-start;
-    text-align: left;
-    padding-left: 130px;
+    align-self: flex-end;   /* Collé à droite */
+    text-align: left;       /* Texte vers la gauche */
 }
 
-.timeline-item:nth-child(6n + 1) {
-    --timeline-accent: #3cb7ff;
-    --timeline-accent-soft: #3cb7ff33;
-}
-
-.timeline-item:nth-child(6n + 2) {
-    --timeline-accent: #f6b83f;
-    --timeline-accent-soft: #f6b83f33;
-}
-
-.timeline-item:nth-child(6n + 3) {
-    --timeline-accent: #f472b6;
-    --timeline-accent-soft: #f472b633;
-}
-
-.timeline-item:nth-child(6n + 4) {
-    --timeline-accent: #4758ff;
-    --timeline-accent-soft: #4758ff33;
-}
-
-.timeline-item:nth-child(6n + 5) {
-    --timeline-accent: #2dd4bf;
-    --timeline-accent-soft: #2dd4bf33;
-}
-
-.timeline-item:nth-child(6n + 6) {
-    --timeline-accent: #34d399;
-    --timeline-accent-soft: #34d39933;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .timeline-item {
-        opacity: 0;
-        animation: timelineFadeInUp 0.6s ease forwards;
-    }
-
-    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
-    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
-    .timeline-item:nth-child(5) { animation-delay: 0.5s; }
-    .timeline-item:nth-child(6) { animation-delay: 0.6s; }
-    .timeline-item:nth-child(7) { animation-delay: 0.7s; }
-    .timeline-item:nth-child(8) { animation-delay: 0.8s; }
-    .timeline-item:nth-child(9) { animation-delay: 0.9s; }
-    .timeline-item:nth-child(10) { animation-delay: 1s; }
-}
-
+/* 4. Les Points (Dots) */
 .timeline-dot {
     position: absolute;
-    top: 50%;
-    width: 46px;
-    height: 46px;
+    top: 24px;
+    width: 20px;
+    height: 20px;
+    background: #0f0c29;
+    border: 3px solid #c084fc;
     border-radius: 50%;
-    background: #050a1c;
-    border: 4px solid var(--timeline-accent);
-    animation: timelinePulse 3.5s ease-in-out infinite;
-    z-index: 3;
-    --timeline-dot-translate: translateY(-50%);
-    transform: var(--timeline-dot-translate) scale(1);
+    box-shadow: 0 0 10px #c084fc;
+    z-index: 10;
 }
 
-.timeline-dot::before {
-    content: "";
-    position: absolute;
-    inset: 6px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.85), transparent 65%);
-    opacity: 0.85;
-}
-
-.timeline-dot::after {
-    content: "";
-    position: absolute;
-    inset: -12px;
-    border-radius: 50%;
-    border: 2px dashed var(--timeline-accent-soft);
-    opacity: 0.75;
-}
-
+/* Position du point pour la Gauche */
 .timeline-item:nth-child(odd) .timeline-dot {
-    right: -68px;
+    right: -10px; /* Centré sur la ligne centrale */
 }
 
+/* Position du point pour la Droite */
 .timeline-item:nth-child(even) .timeline-dot {
-    left: -68px;
+    left: -10px; /* Centré sur la ligne centrale */
 }
 
+/* Effet de survol sur le point */
+.timeline-item:hover .timeline-dot {
+    background: #c084fc;
+    transform: scale(1.3);
+    transition: all 0.3s ease;
+}
+
+/* 5. Les Cartes (Texte) */
 .timeline-card {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 28px;
-    padding: 34px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    box-shadow:
-        0 25px 70px rgba(5, 10, 45, 0.45),
-        0 0 0 1px var(--timeline-accent-soft);
-}
-
-.timeline-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(140deg, var(--timeline-accent-soft), transparent 65%);
-    opacity: 0.6;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
-}
-
-.timeline-card::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 110px;
-    height: 2px;
-    transform: translateY(-50%);
-    background: linear-gradient(to right, var(--timeline-accent), transparent);
-    opacity: 0.8;
-    pointer-events: none;
-}
-
-.timeline-item:nth-child(odd) .timeline-card::after {
-    right: -110px;
-    background: linear-gradient(to left, var(--timeline-accent), transparent);
-}
-
-.timeline-item:nth-child(even) .timeline-card::after {
-    left: -110px;
-}
-
-.timeline-card:hover::before {
-    opacity: 0.95;
+    background: rgba(13, 12, 34, 0.7); /* Fond sombre semi-transparent */
+    border: 1px solid rgba(192, 132, 252, 0.3);
+    border-radius: 16px;
+    padding: 25px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+    
+    /* Assure que le contenu est visible */
+    color: #fff;
+    display: block;
 }
 
 .timeline-card:hover {
-    transform: translateY(-10px) scale(1.01);
-    border-color: var(--timeline-accent);
-    box-shadow:
-        0 35px 85px rgba(5, 10, 45, 0.55),
-        0 0 45px var(--timeline-accent-soft);
+    transform: translateY(-5px);
+    border-color: #c084fc;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 20px rgba(192, 132, 252, 0.2);
 }
 
 .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .date {
+    display: block;
+    color: #c084fc;
+    font-weight: bold;
     font-size: 0.9rem;
-    font-weight: 700;
-    color: #667eea;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-}
-
-.category {
-    display: inline-block;
-    padding: 6px 16px;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
-    border: 1px solid rgba(102, 126, 234, 0.3);
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
+    margin-bottom: 5px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #b8b8d4;
 }
 
 .card-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 12px;
-    line-height: 1.3;
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 0 0 10px 0;
 }
 
 .card-description {
-    color: #b8b8d4;
-    line-height: 1.7;
-    margin-bottom: 18px;
-    font-size: 0.95rem;
+    color: #d1d5db;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
 }
 
 .tags {
     display: flex;
-    flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.timeline-item:nth-child(odd) .tags {
+    justify-content: flex-end; /* Tags alignés à droite pour les items de gauche */
 }
 
 .tag {
-    padding: 6px 14px;
-    background: rgba(102, 126, 234, 0.15);
-    border: 1px solid rgba(102, 126, 234, 0.25);
+    background: rgba(192, 132, 252, 0.15);
+    color: #e9d5ff;
+    padding: 5px 12px;
     border-radius: 20px;
     font-size: 0.8rem;
-    color: #a5a5d6;
-    transition: all 0.3s ease;
-}
-
-.tag:hover {
-    background: rgba(102, 126, 234, 0.25);
-    border-color: rgba(102, 126, 234, 0.4);
-    color: #fff;
+    border: 1px solid rgba(192, 132, 252, 0.2);
 }
 
 .card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #667eea;
+    display: inline-block;
+    margin-top: 15px;
+    color: #c084fc;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
+    font-weight: bold;
 }
 
 .card-link:hover {
-    color: #764ba2;
-    gap: 12px;
+    color: #fff;
+    text-decoration: underline;
 }
 
-.card-link::after {
-    content: "\2192";
-    font-size: 1.2rem;
-}
-
-@keyframes timelineFadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes timelineFadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes timelinePulse {
-    0% {
-        box-shadow:
-            0 0 0 4px var(--timeline-accent-soft),
-            0 12px 25px rgba(0, 0, 0, 0.5);
-        transform: var(--timeline-dot-translate) scale(0.94);
-    }
-    50% {
-        box-shadow:
-            0 0 0 14px var(--timeline-accent-soft),
-            0 18px 32px rgba(0, 0, 0, 0.55);
-        transform: var(--timeline-dot-translate) scale(1.08);
-    }
-    100% {
-        box-shadow:
-            0 0 0 4px transparent,
-            0 12px 25px rgba(0, 0, 0, 0.5);
-        transform: var(--timeline-dot-translate) scale(0.94);
-    }
-}
-
-@media (max-width: 1200px) {
-    .timeline {
-        gap: 90px;
-        padding: 60px 0 40px;
+/* ==================== MOBILE RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    /* La ligne se déplace à gauche */
+    .timeline::before {
+        left: 20px;
     }
 
     .timeline-item {
-        width: min(520px, calc(50% - 60px));
-    }
-
-    .timeline-item:nth-child(odd) {
-        padding-right: 110px;
-    }
-
-    .timeline-item:nth-child(even) {
-        padding-left: 110px;
-    }
-
-    .timeline-card {
-        padding: 30px;
-    }
-}
-
-@media (max-width: 640px) {
-    .section-title-bar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .synthesis-preview__actions {
         width: 100%;
+        padding-left: 60px; /* Espace pour la ligne à gauche */
+        padding-right: 0;
+        margin-bottom: 30px;
     }
 
-    .download-synthesis {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 900px) {
-    .timeline {
-        align-items: stretch;
-        gap: 60px;
-        padding: 20px 24px 10px;
-    }
-
-    .timeline::before {
-        left: 30px;
-        transform: none;
-    }
-
-    .timeline-item,
+    /* On aligne tout à gauche sur mobile */
     .timeline-item:nth-child(odd),
     .timeline-item:nth-child(even) {
-        width: 100%;
-        align-self: stretch;
-        align-items: flex-start;
+        align-self: flex-start;
         text-align: left;
-        padding: 0 0 0 70px;
     }
 
-    .timeline-card {
-        margin: 0;
+    .timeline-item:nth-child(odd) .tags {
+        justify-content: flex-start;
     }
 
-    .timeline-item .timeline-dot {
-        left: 30px;
+    /* Les points reviennent tous à gauche */
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 10px; /* Centré sur la ligne de 20px */
         right: auto;
-        --timeline-dot-translate: translate(-50%, -50%);
     }
-
-    .timeline-card::after {
-        display: none;
-    }
-
-    .card-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-
-@media (max-width: 560px) {
-    .timeline {
-        padding: 10px 12px;
-    }
-
-    .timeline::before {
-        left: 20px;
-    }
-
-    .timeline-item {
-        padding-left: 52px;
-    }
-
-    .timeline-item .timeline-dot {
-        left: 20px;
-    }
-
-    .timeline-dot {
-        width: 32px;
-        height: 32px;
-    }
-
-    .timeline-card {
-        padding: 22px;
-        border-radius: 22px;
-    }
-}
-
-/* ==================== VEILLE - VERTICAL TIMELINE LAYOUT ==================== */
-#veille .timeline {
-    max-width: 960px;
-    width: 100%;
-    margin: 0 auto;
-    display: grid;
-    gap: 36px;
-    padding: 10px 0 10px 46px;
-    align-items: start;
-}
-
-#veille .timeline::before {
-    left: 18px;
-    transform: none;
-    top: 0;
-    bottom: 0;
-}
-
-#veille .timeline-item,
-#veille .timeline-item:nth-child(odd),
-#veille .timeline-item:nth-child(even) {
-    width: 100%;
-    align-self: stretch;
-    align-items: flex-start;
-    text-align: left;
-    padding: 0 0 0 54px;
-}
-
-#veille .timeline-item .timeline-dot {
-    left: 18px;
-    right: auto;
-    --timeline-dot-translate: translate(-50%, -50%);
-}
-
-#veille .timeline-card {
-    width: 100%;
-}
-
-#veille .timeline-card::after {
-    display: none;
 }
 
 /* ==================== CONTACT SECTION ==================== */
