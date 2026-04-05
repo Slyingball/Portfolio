@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const synthesisContent = document.getElementById('synthesisPreviewContent');
 
     if (synthesisBtn && synthesisPreview) {
-        let isExcelLoaded = false;
+        let isPdfLoaded = false;
 
         const openPreview = async () => {
             synthesisPreview.hidden = false;
@@ -189,42 +189,17 @@ document.addEventListener('DOMContentLoaded', function () {
             synthesisPreview.setAttribute('aria-hidden', 'false');
             synthesisBtn.setAttribute('aria-expanded', 'true');
 
-            if (!isExcelLoaded && window.XLSX) {
+            if (!isPdfLoaded) {
                 try {
-                    synthesisContent.innerHTML = `<div style="text-align: center; padding: 2rem;"><i class='bx bx-loader-alt bx-spin' style='font-size: 3rem; color: #a78bfa; margin-bottom: 1rem;'></i><p>Chargement de l'aperçu...</p></div>`;
+                    synthesisContent.innerHTML = `<div style="text-align: center; padding: 2rem;"><i class='bx bx-loader-alt bx-spin' style='font-size: 3rem; color: #a78bfa; margin-bottom: 1rem;'></i><p>Chargement de l'aperçu PDF...</p></div>`;
 
-                    let workbook;
-                    if (typeof synthesisExcelBase64 !== 'undefined') {
-                        workbook = XLSX.read(synthesisExcelBase64, { type: 'base64' });
-                    } else {
-                        const response = await fetch('Tableau de synthèse.xlsx');
-                        const arrayBuffer = await response.arrayBuffer();
-                        workbook = XLSX.read(arrayBuffer, { type: 'array' });
-                    }
+                    const pdfUrl = 'Tableau de synthèse Terence MARDON.pdf';
+                    synthesisContent.innerHTML = `<embed src="${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="600px" style="border-radius: 8px;">`;
 
-                    const firstSheetName = workbook.SheetNames[0];
-                    const worksheet = workbook.Sheets[firstSheetName];
-
-                    const htmlStr = XLSX.utils.sheet_to_html(worksheet, { id: 'synthesis-table' });
-
-                    synthesisContent.innerHTML = `<div class="excel-preview-wrapper" style="overflow-x: auto; max-width: 100%; border-radius: 8px; background: rgba(255,255,255,0.05); padding: 10px;">${htmlStr}</div>`;
-
-                    // Basic styling for the injected table
-                    const table = synthesisContent.querySelector('table');
-                    if (table) {
-                        table.style.width = '100%';
-                        table.style.borderCollapse = 'collapse';
-                        table.style.color = '#e0e7ff';
-                        const tds = table.querySelectorAll('td, th');
-                        tds.forEach(td => {
-                            td.style.border = '1px solid rgba(102, 126, 234, 0.3)';
-                            td.style.padding = '8px';
-                        });
-                    }
-                    isExcelLoaded = true;
+                    isPdfLoaded = true;
                 } catch (error) {
-                    console.error("Erreur lors du chargement de l'Excel", error);
-                    synthesisContent.innerHTML = `<div style="text-align: center; padding: 2rem;"><i class='bx bxs-error-circle' style='font-size: 3rem; color: #ef4444; margin-bottom: 1rem;'></i><p style="margin:0;line-height:1.5;">Impossible de lire l'aperçu du fichier.<br>Le tableau reste disponible au téléchargement.</p></div>`;
+                    console.error("Erreur lors du chargement de l'aperçu", error);
+                    synthesisContent.innerHTML = `<div style="text-align: center; padding: 2rem;"><i class='bx bxs-error-circle' style='font-size: 3rem; color: #ef4444; margin-bottom: 1rem;'></i><p style="margin:0;line-height:1.5;">Impossible de lire l'aperçu du fichier.</p></div>`;
                 }
             }
         };
@@ -251,52 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         closeSynthesisBtn?.addEventListener('click', closePreview);
 
-        downloadSynthesisBtn?.addEventListener('click', () => {
-            const printableContent = synthesisContent?.innerHTML?.trim() || '<p>Aucun contenu disponible pour le moment.</p>';
-            const printWindow = window.open('', '_blank', 'width=900,height=650');
 
-            if (!printWindow) {
-                alert('Veuillez autoriser les fen\u00EAtres pop-up pour t\u00E9l\u00E9charger le tableau.');
-                return;
-            }
-
-            printWindow.document.write(`
-                <html>
-                    <head>
-                        <title>Tableau de synth\u00E8se</title>
-                        <style>
-                            body {
-                                font-family: 'Segoe UI', Arial, sans-serif;
-                                padding: 40px;
-                                color: #0f172a;
-                                background: #f8fafc;
-                            }
-                            h1 {
-                                margin-bottom: 24px;
-                                color: #111827;
-                            }
-                            .synthesis-wrapper {
-                                border: 1px solid #e5e7eb;
-                                border-radius: 16px;
-                                padding: 24px;
-                                background: #fff;
-                                box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <h1>Tableau de synth\u00E8se</h1>
-                        <div class="synthesis-wrapper">
-                            ${printableContent}
-                        </div>
-                    </body>
-                </html>
-            `);
-
-            printWindow.document.close();
-            printWindow.focus();
-            printWindow.print();
-        });
     }
 
     // Back to top button functionality
