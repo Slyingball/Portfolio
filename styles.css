@@ -949,7 +949,7 @@ body.light-mode .skill-card:hover span {
 /* Items Impairs (Gauche) */
 .timeline-item:nth-child(odd) {
     align-self: flex-start; /* Collé à gauche */
-    text-align: right;      /* Texte vers la droite */
+    text-align: left; /* Texte vers la gauche */
 }
 
 /* Items Pairs (Droite) */
@@ -1042,7 +1042,7 @@ body.light-mode .skill-card:hover span {
 }
 
 .timeline-item:nth-child(odd) .tags {
-    justify-content: flex-end; /* Tags alignés à droite pour les items de gauche */
+    justify-content: flex-start; /* Tags alignés à gauche pour les items de gauche */
 }
 
 .tag {
@@ -1736,4 +1736,8 @@ body.light-mode .theme-toggle:hover {
     background: linear-gradient(135deg, #c084fc, #9b5de5);
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(90, 24, 154, 0.6);
+}
+
+.competence-category.is-hidden {
+    display: none !important;
 }

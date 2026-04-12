@@ -130,8 +130,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Projects category toggle
-    const projectToggleButtons = document.querySelectorAll('.projects-toggle .toggle-btn');
-    const projectCards = document.querySelectorAll('.projects-grid .project-card');
+    const projectToggleButtons = document.querySelectorAll('#projets .projects-toggle .toggle-btn');
+    const projectCards = document.querySelectorAll('#projets .projects-grid .project-card');
 
     if (projectToggleButtons.length && projectCards.length) {
         const showAllProjects = () => {
@@ -169,6 +169,60 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const defaultCategory = document.querySelector('.projects-toggle .toggle-btn.active')?.dataset.target || projectToggleButtons[0].dataset.target;
         updateProjectsDisplay(defaultCategory);
+    }
+
+    // Competences category toggle
+    const compToggleButtons = document.querySelectorAll('#competence .competences-toggle .toggle-btn');
+    const compCategories = document.querySelectorAll('#competence .competences-container .competence-category');
+
+    if (compToggleButtons.length && compCategories.length) {
+        const showAllComps = () => {
+            compCategories.forEach(cat => cat.classList.remove('is-hidden'));
+        };
+
+        const updateCompsDisplay = (category) => {
+            if (category === 'tous') {
+                showAllComps();
+                return;
+            }
+            compCategories.forEach(cat => {
+                const isMatch = cat.dataset.category === category;
+                cat.classList.toggle('is-hidden', !isMatch);
+            });
+        };
+
+        compToggleButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.classList.contains('active')) {
+                    // Si on clique sur un bouton déjà actif (sauf "tous"), on le désélectionne et on affiche tout
+                    if (button.dataset.target !== 'tous') {
+                        compToggleButtons.forEach(btn => {
+                            btn.classList.remove('active');
+                            btn.setAttribute('aria-pressed', 'false');
+                        });
+                        const tousBtn = Array.from(compToggleButtons).find(b => b.dataset.target === 'tous');
+                        if (tousBtn) {
+                            tousBtn.classList.add('active');
+                            tousBtn.setAttribute('aria-pressed', 'true');
+                        }
+                        showAllComps();
+                    }
+                    return;
+                }
+
+                compToggleButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-pressed', 'false');
+                });
+
+                button.classList.add('active');
+                button.setAttribute('aria-pressed', 'true');
+                updateCompsDisplay(button.dataset.target);
+            });
+        });
+
+        const defaultCompCategory = document.querySelector('#competence .competences-toggle .toggle-btn.active')?.dataset.target || compToggleButtons[0].dataset.target;
+        updateCompsDisplay(defaultCompCategory);
     }
 
     // Tableau de synthese preview & download
